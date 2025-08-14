@@ -8,6 +8,8 @@ urlpatterns = [
     path('api/news/',include('news.urls')),
     path('api/events/',include('events.urls')),
     path('api/articles/',include('articles.urls')),
+    path('api/comments/',include('comments.urls')),
+    path('api/dashboard/',include('dashboard.urls')),
 
 ]
 

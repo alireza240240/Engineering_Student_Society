@@ -23,7 +23,7 @@ class RegisterView(APIView):
                 role=data.get('role','normal'),
             )
 
-            print(f'data : {data} \n user : {user}')
+            print(f'data : {data} \n user : {user}') # just for test
 
             return Response({'message':'user register was succesfull ...🍏'},status=status.HTTP_201_CREATED)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)

@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
@@ -9,6 +8,8 @@ from rest_framework import status
 from core.permissions import IsMemberOrAdmin
 from .models import Event , EventParticipant
 from .serializers import EventSeializer , RegisterEventSerializer
+
+
 
 class EventListCreateView(APIView):
     permission_classes=[IsAuthenticatedOrReadOnly , IsMemberOrAdmin]

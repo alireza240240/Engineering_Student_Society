@@ -22,7 +22,7 @@ class ArticleListCreateView(APIView):
         return Response(serializer.data,status=status.HTTP_200_OK)
 
     def post(self,request):
-        serializer = ArticleSerializer(data=request.data) # ststus nmtn chn readonl hast
+        serializer = ArticleSerializer(data=request.data) # ststus nmtn chng readonl hast
         if serializer.is_valid():
             serializer.save(author=request.user)
             return Response(serializer.data,status=status.HTTP_201_CREATED)
@@ -56,7 +56,7 @@ class ArticleDetailView(APIView):
         if request.user == article.author :
             serializer = ArticleSerializer(article,data=request.data)
             if serializer.is_valid():
-                serializer.save() # inja byd admin ro hzf konam ke save nshe kt_52 # khb alan khondam ke lazm ham nis chom virayesh va ndi hamon author ghbli mishe ke alie # (author=request.user)
+                serializer.save() # inja byd admin ro hzf konam ke save nshe kt_52 # khb alan khondam ke lazm ham nis chon virayesh va ndi hamon author ghbli mishe ke alie # (author=request.user)
                 return Response(serializer.data)
             return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
         
@@ -79,7 +79,7 @@ class ArticleDetailView(APIView):
 
 
 
-class MyArticlesView(APIView): # bry inke hame chnta artcl har authr bbine to detail yedone mal khsh ro midid inja hme artcl mal khdsh
+class MyArticlesView(APIView): # bry inke hame chnta artcl har authr bbine to detail yedone mal khdsh ro midid inja hme artcl mal khdsh
     permission_classes = [IsAuthenticated]
 
     def get(self,request):

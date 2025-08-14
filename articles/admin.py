@@ -6,6 +6,6 @@ from django.contrib.admin import ModelAdmin
 
 
 @admin.register(Article)
-class EventAdmin(ModelAdmin):
+class ArticleAdmin(ModelAdmin):
     list_display = ('title', 'content', 'status' , 'author','created_at')
 

@@ -25,6 +25,8 @@ class UserListView(APIView):
     
 
 class UserRoleUpdateView(APIView):
+    permission_classes = [IsAdmin]
+
     def put(self , request , user_id):
         new_role = request.data.get('role')
 
@@ -43,6 +45,7 @@ class UserRoleUpdateView(APIView):
 
 
 class UserDeleteView(APIView):
+    permission_classes = [IsAdmin]
 
     def delete(self,request, user_id):
 

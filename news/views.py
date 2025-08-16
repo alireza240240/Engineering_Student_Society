@@ -33,7 +33,10 @@ class NewsDetailView(APIView):
     permission_classes =[IsAuthenticatedOrReadOnly , IsMemberOrAdmin]
 
     def get(self,request,pk):
-        news=News.objects.get(pk=pk)
+        try :
+            news=News.objects.get(pk=pk)
+        except News.DoesNotExist:
+            return Response({'error': 'News not found'}, status=status.HTTP_404_NOT_FOUND)
         serializer = NewsSerializer(news)
         return Response(serializer.data,status=status.HTTP_200_OK)
     

@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated , IsAuthenticatedOrReadOnly
 from rest_framework import status
 
 from .permissions import IsAdmin
@@ -16,6 +16,7 @@ from .serializers import ArticleSerializer
 
 class ArticleListCreateView(APIView):
 
+    permission_classes = [IsAuthenticatedOrReadOnly]  
     def get(self,request):
         articles = Article.objects.filter(status='approved')
         serializer = ArticleSerializer(articles , many=True)

@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'articles',
     'comments',
     'dashboard',
+    'drf_spectacular',
+    
     
 ]
 
@@ -136,6 +138,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
@@ -154,3 +157,14 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': False,
 }
+
+
+# Celery Config
+CELERY_BROKER_URL = "redis://localhost:6379/0"   
+CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+
+
+# Email conf
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" # toye console bry test
+DEFAULT_FROM_EMAIL = "anjomanWeb@anjoman.com"
+

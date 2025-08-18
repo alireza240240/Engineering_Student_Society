@@ -9,6 +9,8 @@ from .permissions import IsAdmin
 from .models import Article
 from .serializers import ArticleSerializer
 
+from .tasks import notify_admin_new_article
+
 # articl_list_create     get==HAME , post == HAME
 # my_article  ISAUTH -> get== khodAuthor , admin 
 # article_detail get=HAME artc ke approve bsh mibinn --- put if request.user == author or request.user.role == 'admin'
@@ -25,7 +27,10 @@ class ArticleListCreateView(APIView):
     def post(self,request):
         serializer = ArticleSerializer(data=request.data) # ststus nmtn chng readonl hast
         if serializer.is_valid():
-            serializer.save(author=request.user)
+            # serializer.save(author=request.user)
+            article = serializer.save(author=request.user)
+            notify_admin_new_article.delay(article.title, request.user.username)
+
             return Response(serializer.data,status=status.HTTP_201_CREATED)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 

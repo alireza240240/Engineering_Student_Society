@@ -8,7 +8,7 @@ class UserTestModel(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='testuser', password='1234', email='test@gmail.com')
 
-    _
+
     def test_str_mtd(self):
         self.assertEqual(str(self.user), "testuser")
 

@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'anjoman_db',
         'USER': 'anjoman_user',
         'PASSWORD': '1234',
-        'HOST': 'localhost',
+        'HOST': 'db', # 'localhost', # 'db' for docker, 'localhost' for local development
         'PORT': '5432',
     }
 }
@@ -160,8 +160,12 @@ SIMPLE_JWT = {
 
 
 # Celery Config
-CELERY_BROKER_URL = "redis://localhost:6379/0"   
-CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+# CELERY_BROKER_URL = "redis://localhost:6379/0"   
+# CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+
+# settings.py
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
 
 
 # Email conf

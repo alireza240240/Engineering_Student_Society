@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'anjoman_web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'anjoman_db',
-        'USER': 'anjoman_user',
-        'PASSWORD': '1234',
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'HOST': 'db', 
         'PORT': '5432',
     }

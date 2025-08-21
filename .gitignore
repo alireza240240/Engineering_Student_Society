@@ -17,6 +17,10 @@ db.sqlite3
 .vscode/
 .idea/
 
+# Docker
+*.log
+*.pid
+
 # OS
 .DS_Store
 

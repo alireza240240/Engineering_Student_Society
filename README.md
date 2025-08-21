@@ -58,10 +58,7 @@ python manage.py createsuperuser
 # Run the dev server
 python manage.py runserver
 
----
-
 # For background task processing, run Celery in a separate terminal:
-```bash
 celery -A anjoman_web worker -l info
 ```
 
@@ -81,11 +78,12 @@ celery -A anjoman_web worker -l info
 
 ---
 
-🤝 Contributing
+## 🤝 Contributing
 
-Contributions and suggestions are welcome!
-	1.	Fork this repository
-	2.	Create a new branch (git checkout -b feature-name)
-	3.	Commit your changes (git commit -m 'Add new feature')
-	4.	Push to your branch (git push origin feature-name)
-	5.	Open a Pull Request 🎉
+Contributions and suggestions are welcome!  
+
+1. Fork this repository  
+2. Create a new branch (`git checkout -b feature-name`)  
+3. Commit your changes (`git commit -m 'Add new feature'`)  
+4. Push to your branch (`git push origin feature-name`)  
+5. Open a Pull Request 🎉

@@ -1,6 +1,5 @@
 from django.db import models
 from django.conf import settings
-# from core.models import User
 
 class News(models.Model):
     title = models.CharField(max_length=100)

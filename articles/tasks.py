@@ -10,11 +10,7 @@ def notify_admin_new_article(article_title, author_username):
         subject,
         message,
         settings.DEFAULT_FROM_EMAIL,
-        ["admin@example.com"],   # all admin list for send email
+        ["example@gmail.com"],  # enter admin email
         fail_silently=False,
     )
 
-
-# redis-server
-# celery -A anjoman_web worker -l info
-# python manage.py runserver

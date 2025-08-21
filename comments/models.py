@@ -11,7 +11,7 @@ class Comment(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    # related_name baes mish ke az smt articl y even y news ba obj.comments.all() comment hashono bbnim
+
     article = models.ForeignKey(Article , on_delete=models.CASCADE , null= True , blank= True , related_name='comments')
     event = models.ForeignKey(Event , on_delete=models.CASCADE , null= True , blank= True , related_name='comments')
     news = models.ForeignKey(News , on_delete=models.CASCADE , null= True , blank= True , related_name='comments')

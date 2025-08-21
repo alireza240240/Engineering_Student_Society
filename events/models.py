@@ -4,7 +4,7 @@ from django.conf import settings
 class Event(models.Model):
     title = models.CharField(max_length=250)
     description = models.TextField()
-    date = models.DateTimeField() # zmn brgzri
+    date = models.DateTimeField() 
     capacity =  models.PositiveIntegerField()
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)

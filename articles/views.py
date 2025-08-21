@@ -11,10 +11,6 @@ from .serializers import ArticleSerializer
 
 from .tasks import notify_admin_new_article
 
-# articl_list_create     get==HAME , post == HAME
-# my_article  ISAUTH -> get== khodAuthor , admin 
-# article_detail get=HAME artc ke approve bsh mibinn --- put if request.user == author or request.user.role == 'admin'
-# article
 
 class ArticleListCreateView(APIView):
 
@@ -25,9 +21,9 @@ class ArticleListCreateView(APIView):
         return Response(serializer.data,status=status.HTTP_200_OK)
 
     def post(self,request):
-        serializer = ArticleSerializer(data=request.data) # ststus nmtn chng readonl hast
+        serializer = ArticleSerializer(data=request.data) 
         if serializer.is_valid():
-            # serializer.save(author=request.user)
+
             article = serializer.save(author=request.user)
             notify_admin_new_article.delay(article.title, request.user.username)
 
@@ -58,11 +54,11 @@ class ArticleDetailView(APIView):
         except Article.DoesNotExist:
             return Response({'error': 'Article Not Found ... 🍒'},status=status.HTTP_404_NOT_FOUND)
 
-        # if request.user == article.author or request.user.role == 'admin' :
+
         if request.user == article.author :
             serializer = ArticleSerializer(article,data=request.data)
             if serializer.is_valid():
-                serializer.save() # inja byd admin ro hzf konam ke save nshe kt_52 # khb alan khondam ke lazm ham nis chon virayesh va ndi hamon author ghbli mishe ke alie # (author=request.user)
+                serializer.save() 
                 return Response(serializer.data)
             return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
         
@@ -81,11 +77,10 @@ class ArticleDetailView(APIView):
             return Response({'message':'pak kardi Article ro 😆'},status=status.HTTP_204_NO_CONTENT)
         else:
             return Response({'error':'OOps You Dont Have Permission For Delete Data ...🍋'})
-        # in else ke agar req.usr hamon auth nabood gzshtm ke nbsh None mide
 
 
 
-class MyArticlesView(APIView): # bry inke hame chnta artcl har authr bbine to detail yedone mal khdsh ro midid inja hme artcl mal khdsh
+class MyArticlesView(APIView): 
     permission_classes = [IsAuthenticated]
 
     def get(self,request):

@@ -23,7 +23,7 @@ class RegisterView(APIView):
                 role=data.get('role','normal'),
             )
 
-            print(f'data : {data} \n user : {user}') # just for test
+
 
             return Response({'message':'user register was succesfull ...🍏'},status=status.HTTP_201_CREATED)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
@@ -31,24 +31,3 @@ class RegisterView(APIView):
 
 
 
-
-
-# ---------------- bray RegisterView -----------------
-
-
-    # user = User.objects.create_user khoby create_user ine pass hash mikne
-    
-    # def post(self,request):
-    #     serializer = UserSerializer(data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save
-    #         return Response({'message':'user register was succesfull .'},status=status.HTTP_201_CREATED)
-    #     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-
-
-
-    # def post(self,request):
-    #     serializer = UserSerializer(data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save
-    #         return Response(serializer.validated_data,status=status.HTTP_201_CREATED)

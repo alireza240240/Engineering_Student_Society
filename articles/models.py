@@ -19,13 +19,4 @@ class Article(models.Model):
     
 
 
-    #  class Status(models.TextChoices):
-    #     PENDING = 'pending', 'در انتظار تایید'
-    #     APPROVED = 'approved', 'تایید شده'
-    #     REJECTED = 'rejected', 'رد شده'
-
-    #     status = models.CharField(
-    #     max_length=10,
-    #     choices=Status.choices,
-    #     default=Status.PENDING,
-    # )
+   

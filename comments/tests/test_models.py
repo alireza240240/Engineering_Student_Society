@@ -15,7 +15,7 @@ class CommentTestModel(TestCase):
             title="Test Article",
             content="Test Content",
             author=self.user,
-            status="approved" # bry test mishe status dad ba inke readonly hast to seiralizr
+            status="approved" 
         )
         self.comment = Comment.objects.create(
             author=self.user,

@@ -49,7 +49,7 @@ class EventDetailView(APIView):
 
 
 class RegisterEventView(APIView):
-    permission_classes = [IsAuthenticatedOrReadOnly ]# , IsMemberOrAdmin nmikhad dige normal ham mitone reg kone
+    permission_classes = [IsAuthenticatedOrReadOnly ]
 
     def post(self,request,pk):
         try :
@@ -57,7 +57,7 @@ class RegisterEventView(APIView):
         except Event.DoesNotExist :
             return Response({'error':'event does not exist ...❌'},status=status.HTTP_404_NOT_FOUND)
 
-        if event.participants.count() >= event.capacity : # event.participant in mire to field event az model evpartc oj mid ba count() tedad mide
+        if event.participants.count() >= event.capacity : 
             return Response({'error':'The Event Capacity Is Compelete ...❌'},status=status.HTTP_400_BAD_REQUEST)
         
         if EventParticipant.objects.filter(event=event,user=request.user).exists():
@@ -65,5 +65,5 @@ class RegisterEventView(APIView):
 
         EventParticipant.objects.create(event=event,user=request.user)
         return Response({'message':'Succesfull Register Was Succesfull ...✅'},status=status.HTTP_201_CREATED)
-        # inja dige estfd az srilzr lazem nist bra vght ke az karbar koli dade bgri to json alan bra skht EventParticipant ke chizi nmigrm hame ch lazm toye hamin view hast ham event hm user tnha vorodi lazm pk hst ke onam az url miad
+       
         

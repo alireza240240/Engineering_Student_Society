@@ -33,7 +33,7 @@ class ArticleViewsTest(TestCase):
         self.assertEqual(Article.objects.count(), 2)
 
     def test_detail_view_access_control(self):
-        # کاربر ناشناس فقط approved رو می‌بینه
+
         response = self.client.get(f"/api/articles/{self.article.id}/")
         self.assertEqual(response.status_code, 200)
 

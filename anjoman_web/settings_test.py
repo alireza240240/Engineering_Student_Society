@@ -10,14 +10,11 @@ DATABASES = {
     }
 }
 
-# Use a simple password hasher for testing purposes
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.MD5PasswordHasher',
 ]
 
 
-# Use the console email backend to avoid sending real emails during tests
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
-# python manage.py test --settings=anjoman_web.settings_test

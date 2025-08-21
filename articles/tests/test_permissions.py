@@ -79,7 +79,7 @@ class ArticleApproveRejectTests(TestCase):
         self.client.login(username="admin", password="1234")
         response = self.client.put(self.approve_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.article.refresh_from_db() # dobare grftn article az db bry motmaen bodan az change
+        self.article.refresh_from_db() 
         self.assertEqual(self.article.status, "approved")
 
     def test_admin_can_reject(self):

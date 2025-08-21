@@ -14,7 +14,3 @@ urlpatterns = [
 
 ]
 
-#  --- git init --- git add . -- git commit -m "" --- git push origin main 
-# git remote add origin https://github.com/alireza240240/Engineering_Student_Society.git
-# git branch -M main
-# git push -u origin main

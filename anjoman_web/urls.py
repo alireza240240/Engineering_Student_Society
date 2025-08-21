@@ -3,7 +3,6 @@ from django.contrib import admin
 from django.urls import path , include , re_path
 from rest_framework import permissions
 
-# drste moshkel az IntelliSense vscode
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularSwaggerView,
@@ -31,8 +30,3 @@ urlpatterns = [
     path('api/dashboard/',include('dashboard.urls')),
 
 ]
-
-# 1 ta user admin bszm postman ---- 1 user member ---- 1 user normal
-# ba hame GET konam OK -------- ba hame Post,Put,Delete konam normal ha Error
-# event bsazam , update deleta konam , register konam
-# havaset bsh ke ma permissions ro az news bordam to core ke all app avilble

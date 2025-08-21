@@ -37,6 +37,6 @@ class EventTestModel(TestCase):
     def test_unique_participant(self):
 
         EventParticipant.objects.create(event=self.event , user=self.user)
-        # ya type error ro bgo ya dr hlt koli Exception bnvs yni hr erri
+        
         with self.assertRaises(Exception):
             EventParticipant.objects.create(event=self.event , user=self.user)

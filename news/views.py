@@ -23,7 +23,7 @@ class NewsListCreateView(APIView):
     def post(self,request):
         serializer = NewsSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(author = request.user) # byd inja bgi ke author hamoni hast k login krd to serilzr fght gofti to get str in user ro nshn bde to model ham gofti ye news byd dashte bash jayi jz in view tarif nkrdi rah digge in bode to khd serlzr override midrdi context['request'].user middi
+            serializer.save(author = request.user) 
             return Response(serializer.data,status=status.HTTP_201_CREATED)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 

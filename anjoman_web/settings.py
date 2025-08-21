@@ -1,5 +1,5 @@
 
-
+import os
 from pathlib import Path
 from datetime import timedelta
 
@@ -11,7 +11,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h_rt03ou-1__3(s+7q0(ifworn5#et!xg-bf^-ur^uyf9gfjfx'
+SECRET_KEY = os.environ.get("SECRET_KEY")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -80,18 +81,11 @@ DATABASES = {
         'NAME': 'anjoman_db',
         'USER': 'anjoman_user',
         'PASSWORD': '1234',
-        'HOST': 'db', # 'localhost', # 'db' for docker, 'localhost' for local development
+        'HOST': 'db', 
         'PORT': '5432',
     }
 }
 
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 
 # Password validation
@@ -152,23 +146,25 @@ AUTH_USER_MODEL = 'core.User'
 
 # JWT settings
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=7),       # توکن دسترسی: ۷ روز
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),     # توکن ریفرش: ۳۰ روز
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=7),       
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),    
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': False,
 }
 
 
-# Celery Config
-# CELERY_BROKER_URL = "redis://localhost:6379/0"   
-# CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
 
 # settings.py
 CELERY_BROKER_URL = 'redis://redis:6379/0'
 CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
 
 
-# Email conf
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" # toye console bry test
-DEFAULT_FROM_EMAIL = "anjomanWeb@anjoman.com"
 
+# Email conf
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"         
+EMAIL_PORT = 587                      
+EMAIL_USE_TLS = True                  
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")   
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "") 
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", EMAIL_HOST_USER)
